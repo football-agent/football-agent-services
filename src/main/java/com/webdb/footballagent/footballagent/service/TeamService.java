@@ -1,7 +1,13 @@
 package com.webdb.footballagent.footballagent.service;
 
+import com.webdb.footballagent.footballagent.exception.TeamNotFoundException;
+import com.webdb.footballagent.footballagent.model.team.Team;
 import com.webdb.footballagent.footballagent.repository.TeamRepository;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+@Service
 public class TeamService {
 
 
@@ -9,5 +15,14 @@ public class TeamService {
 
     public TeamService(TeamRepository teamRepository) {
         this.teamRepository = teamRepository;
+    }
+
+
+    public List<Team> getAllTeams(){
+        return teamRepository.findAll();
+    }
+
+    public Team getTeamByName(String name) throws TeamNotFoundException {
+       return teamRepository.findByTeam(name).orElseThrow(()-> new TeamNotFoundException("The team with this name does not exist"));
     }
 }
