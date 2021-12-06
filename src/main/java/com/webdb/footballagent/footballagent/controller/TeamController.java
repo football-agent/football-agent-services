@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/football_agent")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class TeamController {
 
     private final TeamService teamService;
@@ -22,6 +23,7 @@ public class TeamController {
     }
 
     @GetMapping(value = "all_teams")
+
     public List<Team> getTeams() {
         return teamService.getAllTeams();
     }

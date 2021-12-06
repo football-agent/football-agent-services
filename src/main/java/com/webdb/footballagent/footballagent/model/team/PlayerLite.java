@@ -1,6 +1,7 @@
 package com.webdb.footballagent.footballagent.model.team;
 
 public class PlayerLite {
+    private String player;
     private Integer player_id;
     private Integer age;
     private String position;
@@ -82,5 +83,13 @@ public class PlayerLite {
 
     public void setAttr4(Double attr4) {
         this.attr4 = attr4;
+    }
+
+    public String getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(String player) {
+        this.player = player;
     }
 }
