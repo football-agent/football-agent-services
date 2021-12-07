@@ -2,7 +2,7 @@ package com.webdb.footballagent.footballagent.controller;
 
 
 import com.webdb.footballagent.footballagent.exception.TeamNotFoundException;
-import com.webdb.footballagent.footballagent.model.team.PlayerLite;
+import com.webdb.footballagent.footballagent.model.team.Player;
 import com.webdb.footballagent.footballagent.model.team.Team;
 import com.webdb.footballagent.footballagent.service.TeamService;
 import org.springframework.http.HttpStatus;
@@ -29,7 +29,7 @@ public class TeamController {
     }
 
     @GetMapping(value = "all_players")
-    public List<PlayerLite> getPlayers(){
+    public List<Player> getPlayers(){
         return teamService.getAllPlayers();
     }
 
