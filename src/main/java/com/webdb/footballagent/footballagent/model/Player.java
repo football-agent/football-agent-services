@@ -1,4 +1,4 @@
-package com.webdb.footballagent.footballagent.model.team;
+package com.webdb.footballagent.footballagent.model;
 
 public class Player {
     private String player;

@@ -1,4 +1,4 @@
-package com.webdb.footballagent.footballagent.model.team;
+package com.webdb.footballagent.footballagent.model;
 
 
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -6,7 +6,6 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
 
-@Document(collection = "testCollection")
 public class Team {
 
      @Field
