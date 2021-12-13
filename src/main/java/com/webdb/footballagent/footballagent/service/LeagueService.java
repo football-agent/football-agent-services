@@ -22,8 +22,8 @@ public class LeagueService {
         return leagueRepository.findAll();
     }
 
-//    public League getLeagueByName(String name) throws LeagueNotFoundException {
-//        return leagueRepository.findByleague_name(name).orElseThrow(() -> new LeagueNotFoundException("The league with this name does not exist"));
-//    }
+    public League getLeagueByName(String name) throws LeagueNotFoundException {
+        return leagueRepository.findByLeagueName(name).orElseThrow(() -> new LeagueNotFoundException("The league with this name does not exist"));
+    }
 
 }

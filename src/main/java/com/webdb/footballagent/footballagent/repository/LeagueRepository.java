@@ -7,6 +7,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.Optional;
 
 public interface LeagueRepository extends MongoRepository<League, String> {
-//    public Optional<League> findByleague_name(String name);
+    public Optional<League> findByLeagueName(String name);
 
 }

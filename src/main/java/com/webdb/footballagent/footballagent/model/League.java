@@ -8,16 +8,16 @@ import java.util.List;
 
 @Document(collection = "testCollection")
 public class League {
-    @Field
-    private String league_name;
+    @Field(name = "league_name")
+    private String leagueName;
     private List<Team> teams;
 
-    public String getLeague_name() {
-        return league_name;
+    public String getLeagueName() {
+        return leagueName;
     }
 
-    public void setLeague_name(String league_name) {
-        this.league_name = league_name;
+    public void setLeagueName(String leagueName) {
+        this.leagueName = leagueName;
     }
 
     public List<Team> getTeams() {
