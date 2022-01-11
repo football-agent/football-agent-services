@@ -5,6 +5,7 @@ package com.webdb.footballagent.footballagent.controller;
 import com.webdb.footballagent.footballagent.config.TokenProvider;
 import com.webdb.footballagent.footballagent.dto.UserDto;
 import com.webdb.footballagent.footballagent.model.AuthToken;
+import com.webdb.footballagent.footballagent.model.Selection;
 import com.webdb.footballagent.footballagent.model.User;
 import com.webdb.footballagent.footballagent.request.UserLoginRequest;
 import com.webdb.footballagent.footballagent.service.UserService;
@@ -17,6 +18,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -55,6 +58,15 @@ public class UserController {
         return userService.save(user);
     }
 
+    @RequestMapping(value="/{username}/add_selection", method = RequestMethod.POST)
+    public void addSelection(@RequestBody Selection selection ,@PathVariable String username){
+        userService.addSelection(selection, username);
+    }
+
+    @RequestMapping(value="/{username}/get_all_selections", method = RequestMethod.GET)
+    public List<Selection> getAllSelections(@PathVariable String username){
+      return  userService.getAllSelections(username);
+    }
 
 
     @PreAuthorize("hasRole('ADMIN')")

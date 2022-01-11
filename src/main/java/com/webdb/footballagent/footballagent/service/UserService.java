@@ -3,6 +3,7 @@ package com.webdb.footballagent.footballagent.service;
 
 import com.webdb.footballagent.footballagent.dto.UserDto;
 import com.webdb.footballagent.footballagent.model.Role;
+import com.webdb.footballagent.footballagent.model.Selection;
 import com.webdb.footballagent.footballagent.model.User;
 import com.webdb.footballagent.footballagent.repository.UserRepository;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -59,6 +60,18 @@ public class UserService implements UserDetailsService {
         return userRepository.findByUsername(username);
     }
 
+
+    public List<Selection> getAllSelections(String username){
+        return userRepository.findByUsername(username).getSelections();
+    }
+
+    public void addSelection(Selection selection, String username){
+        User user = userRepository.findByUsername(username);
+        List<Selection> selections = user.getSelections();
+        selections.add(selection);
+        user.setSelections(selections);
+        userRepository.save(user);
+    }
 
     public User save(UserDto user) {
 
