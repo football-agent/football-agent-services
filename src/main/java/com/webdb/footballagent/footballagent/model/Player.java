@@ -22,6 +22,7 @@ public class Player {
     private Double physic;
     private String league;
     private Double wage_eur;
+    private String photo;
 
     public String getPlayer() {
         return player;
@@ -189,5 +190,13 @@ public class Player {
 
     public void setWage_eur(Double wage_eur) {
         this.wage_eur = wage_eur;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }
