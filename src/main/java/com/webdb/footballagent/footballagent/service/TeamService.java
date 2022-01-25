@@ -40,4 +40,8 @@ public class TeamService {
         return players;
 
     }
+
+    public Player getPlayerByName(String playerName){
+        return getAllPlayers().stream().filter(player->player.getPlayer().equals(playerName)).collect(Collectors.toList()).get(0);
+    }
 }
