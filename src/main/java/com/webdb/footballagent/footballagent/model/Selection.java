@@ -6,23 +6,22 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 public class Selection {
 
-    private String selectedTeam;
-    private String selectedPlayer;
+    private Team selectedTeam;
+    private Player selectedPlayer;
 
-
-    public String getSelectedTeam() {
+    public Team getSelectedTeam() {
         return selectedTeam;
     }
 
-    public void setSelectedTeam(String selectedTeam) {
+    public void setSelectedTeam(Team selectedTeam) {
         this.selectedTeam = selectedTeam;
     }
 
-    public String getSelectedPlayer() {
+    public Player getSelectedPlayer() {
         return selectedPlayer;
     }
 
-    public void setSelectedPlayer(String selectedPlayer) {
+    public void setSelectedPlayer(Player selectedPlayer) {
         this.selectedPlayer = selectedPlayer;
     }
 }
