@@ -1,12 +1,11 @@
 package com.webdb.footballagent.footballagent.service;
 
 import com.webdb.footballagent.footballagent.model.Player;
+import com.webdb.footballagent.footballagent.model.Prediction;
 import org.apache.commons.math3.stat.regression.OLSMultipleLinearRegression;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -19,15 +18,13 @@ public class PredictionService {
         this.teamService = teamService;
     }
 
-    public void predictContractValue(Player playerToPredict) {
+    public Prediction predictContractValue(String  playerName) {
         List<Player> allPlayers = teamService.getAllPlayers();
         OLSMultipleLinearRegression regression = new OLSMultipleLinearRegression();
-// weight
         List<Double> wages = teamService.getAllPlayers().stream().map(player -> Objects.isNull(player.getWage_eur()) ? 0 : player.getWage_eur()).collect(Collectors.toList());
-//        String[][] array = list.stream()
-//                .map(l -> l.stream().toArray(String[]::new))
-//                .toArray(String[][]::new);
         List<List<Double>> players = new ArrayList<>();
+        Map<String , List<Double>> playerMap = new HashMap<>();
+
 
         for (int i = 0; i < allPlayers.size(); i++) {
             List<Double> featureList = new ArrayList<>();
@@ -45,10 +42,8 @@ public class PredictionService {
             featureList.add((double) (Objects.isNull(allPlayers.get(i).getPhysic()) ? 0 : allPlayers.get(i).getPhysic()));
             featureList.add((double) (Objects.isNull(allPlayers.get(i).getShooting()) ? 0 : allPlayers.get(i).getShooting()));
             players.add(featureList);
+            playerMap.put(allPlayers.get(i).getPlayer(), featureList);
         }
-
-// height, waist
-
 
         double[][] xPlayersArray = players.stream().map(l -> l.stream().mapToDouble(Double::doubleValue).toArray()).toArray(double[][]::new);
 
@@ -59,14 +54,15 @@ public class PredictionService {
 
         double[] coe = regression.estimateRegressionParameters();
 
-        double[] z = new double[allPlayers.size()];
-        for (int i = 0; i < z.length; i++) {
-            z[i] = coe[0];
-            for (int j = 1; j < coe.length; j++) z[i] += coe[j] * xPlayersArray[i][j - 1];
-        }
 
-        for (double p : coe) {
-            System.out.println(p);
+        Double predictedValue = coe[0];
+        for (int i =0 ; i<playerMap.get(playerName).size(); i++){
+           predictedValue+=coe[i+1] * playerMap.get(playerName).get(i);
         }
+        Prediction prediction = new Prediction();
+        prediction.setPredictedValue(predictedValue);
+        prediction.setPlayerName(playerName);
+
+        return prediction;
     }
 }

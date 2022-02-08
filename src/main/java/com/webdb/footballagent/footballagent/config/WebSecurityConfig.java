@@ -43,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/v1/football_agent/user/authenticate", "/v1/football_agent/user/register", "/v1/football_agent/all_leagues", "/v1/football_agent/all_teams", "/v1/football_agent/all_players", "/v1/football_agent/player_by_name/**", "/v1/football_agent/prediction/predict").permitAll()
+                .antMatchers("/v1/football_agent/user/authenticate", "/v1/football_agent/user/register", "/v1/football_agent/all_leagues", "/v1/football_agent/all_teams", "/v1/football_agent/all_players", "/v1/football_agent/player_by_name/**", "/v1/football_agent/prediction/predict/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint).and()

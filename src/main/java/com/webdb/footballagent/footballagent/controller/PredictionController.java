@@ -2,11 +2,9 @@ package com.webdb.footballagent.footballagent.controller;
 
 
 import com.webdb.footballagent.footballagent.model.Player;
+import com.webdb.footballagent.footballagent.model.Prediction;
 import com.webdb.footballagent.footballagent.service.PredictionService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,8 +20,8 @@ public class PredictionController {
     }
 
 
-    @GetMapping(value = "predict")
-    public void getPlayers(){
-        predictionService.test();
+    @GetMapping(value = "predict/{player_name}")
+    public Prediction getPrediction(@PathVariable String player_name){
+        return predictionService.predictContractValue(player_name);
     }
 }
