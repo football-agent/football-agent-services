@@ -24,6 +24,64 @@ public class Player {
     private Double wage_eur;
     private String photo;
 
+
+    private Double shots_total;
+
+    private Double assisted_shots;
+    private Double         tackles;
+    private Double  passes_live;
+
+    private Double pressure_regains;
+    private Double    gca;
+
+    public Double getShots_total() {
+        return shots_total;
+    }
+
+    public void setShots_total(Double shots_total) {
+        this.shots_total = shots_total;
+    }
+
+    public Double getAssisted_shots() {
+        return assisted_shots;
+    }
+
+    public void setAssisted_shots(Double assisted_shots) {
+        this.assisted_shots = assisted_shots;
+    }
+
+    public Double getTackles() {
+        return tackles;
+    }
+
+    public void setTackles(Double tackles) {
+        this.tackles = tackles;
+    }
+
+    public Double getPasses_live() {
+        return passes_live;
+    }
+
+    public void setPasses_live(Double passes_live) {
+        this.passes_live = passes_live;
+    }
+
+    public Double getPressure_regains() {
+        return pressure_regains;
+    }
+
+    public void setPressure_regains(Double pressure_regains) {
+        this.pressure_regains = pressure_regains;
+    }
+
+    public Double getGca() {
+        return gca;
+    }
+
+    public void setGca(Double gca) {
+        this.gca = gca;
+    }
+
     public String getPlayer() {
         return player;
     }
