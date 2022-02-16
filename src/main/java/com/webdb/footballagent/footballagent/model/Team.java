@@ -10,20 +10,10 @@ public class Team {
 
      @Field
      private String team;
-     private String team_logo;
+     private String logo;
      private String team_link;
-//    private String name;
-//    private  String code;
-//    private Titles titles;
-//    private Map<String, LeagueRank> league_rank;
-//    private Integer stadium_size;
-//    private Integer avg_attendence;
-//    private List<Integer> arrivals;
-//    private List<Integer> departures;
-//    private String instagram_followers;
-//    private List<Player> players;
-
-      private List<Player> players;
+     private List<Stat> stats;
+     private List<Player> players;
 
 
     public String getTeam() {
@@ -42,12 +32,12 @@ public class Team {
         this.players = players;
     }
 
-    public String getTeam_logo() {
-        return team_logo;
+    public String getLogo() {
+        return logo;
     }
 
-    public void setTeam_logo(String team_logo) {
-        this.team_logo = team_logo;
+    public void setLogo(String logo) {
+        this.logo = logo;
     }
 
     public String getTeam_link() {
@@ -56,6 +46,14 @@ public class Team {
 
     public void setTeam_link(String team_link) {
         this.team_link = team_link;
+    }
+
+    public List<Stat> getStats() {
+        return stats;
+    }
+
+    public void setStats(List<Stat> stats) {
+        this.stats = stats;
     }
 }
 

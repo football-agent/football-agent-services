@@ -1,11 +1,19 @@
-package com.webdb.footballagent.footballagent.model;
+package com.webdb.footballagent.footballagent.response;
 
 public class Prediction {
 
 
     private String playerName;
+    private String teamName;
     private Double predictedValue;
 
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
 
     public String getPlayerName() {
         return playerName;

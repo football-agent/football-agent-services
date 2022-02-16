@@ -3,6 +3,7 @@ package com.webdb.footballagent.footballagent.controller;
 
 import com.webdb.footballagent.footballagent.exception.TeamNotFoundException;
 import com.webdb.footballagent.footballagent.model.Player;
+import com.webdb.footballagent.footballagent.model.Stat;
 import com.webdb.footballagent.footballagent.model.Team;
 import com.webdb.footballagent.footballagent.service.TeamService;
 import org.springframework.http.HttpStatus;
@@ -35,6 +36,11 @@ public class TeamController {
     @GetMapping(value ="player_by_name/{player_name}")
     public Player getPlayerByName(@PathVariable String player_name){
         return teamService.getPlayerByName(player_name);
+    }
+
+    @GetMapping(value ="stats_by_team/{team_name}")
+    public List<Stat> getStatsByTeam(@PathVariable String team_name){
+        return teamService.getStatsByTeam(team_name);
     }
 
 
