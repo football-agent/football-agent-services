@@ -10,6 +10,7 @@ import com.webdb.footballagent.footballagent.repository.TeamRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,7 +34,7 @@ public class TeamService {
     public List<Player> getAllPlayers() {
         List<Player> players = getAllTeams().stream().map(Team::getPlayers).collect(Collectors.toList()).stream()
                 .flatMap(List::stream)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()).stream().filter(player -> !Objects.isNull(player.getValue_eur())).collect(Collectors.toList());
         return players;
 
     }
