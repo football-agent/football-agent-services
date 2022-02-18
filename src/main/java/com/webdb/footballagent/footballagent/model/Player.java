@@ -24,6 +24,7 @@ public class Player {
     private Double wage_eur;
     private String photo;
     private String value_eur;
+    private String passes;
 
 
     private Double shots_total;
@@ -265,5 +266,13 @@ public class Player {
 
     public void setValue_eur(String value_eur) {
         this.value_eur = value_eur;
+    }
+
+    public String getPasses() {
+        return passes;
+    }
+
+    public void setPasses(String passes) {
+        this.passes = passes;
     }
 }
